@@ -3,6 +3,7 @@ import { displayMap } from './mapbox';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
+import { signup } from './signup';
 
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
@@ -11,12 +12,27 @@ const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
+const signupForm = document.querySelector('.form--signup');
 
 //DELEGATION
 if (mapBox) {
   const locations = JSON.parse(mapBox.dataset.locations);
   displayMap(locations);
 }
+
+if (signupForm) {
+  signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('Form submitted');
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('cpassword').value;
+    console.log(name, email, password, passwordConfirm);
+    signup(name, email, password, passwordConfirm);
+  });
+}
+
 if (loginForm) {
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();

@@ -138,6 +138,7 @@ exports.isLoggedIn = async (req, res, next) => {
 
       return next();
     } catch (err) {
+      console.log('no user found');
       return next();
     }
   }
