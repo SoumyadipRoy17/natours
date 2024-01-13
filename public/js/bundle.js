@@ -12072,7 +12072,12 @@ var logout = exports.logout = /*#__PURE__*/function () {
           });
         case 3:
           res = _context2.sent;
-          if (res.data.status === 'success') location.reload(true);
+          if (res.data.status === 'success') {
+            (0, _alerts.showAlert)('success', 'Logged out successfully');
+            window.setTimeout(function () {
+              location.assign('/');
+            }, 3000);
+          }
           _context2.next = 10;
           break;
         case 7:
@@ -69606,7 +69611,7 @@ var signup = exports.signup = /*#__PURE__*/function () {
           res = _context.sent;
           console.log(res);
           if (res.data.status === 'sucess' || res.data.status === 'success') {
-            (0, _alerts.showAlert)('success', "USER updated successfully!");
+            (0, _alerts.showAlert)('success', "Welcome to Natours.");
             window.setTimeout(function () {
               window.location.replace('/me');
             }, 1000);
@@ -69883,7 +69888,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54542" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61407" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
